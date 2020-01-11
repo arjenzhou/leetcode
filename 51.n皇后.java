@@ -16,20 +16,20 @@ class Solution {
     int queens[];
   
     public boolean isNotUnderAttack(int row, int col) {
-    int res = rows[col] + hills[row - col + n] + dales[row + col];
+    int res = cols[col] + hills[row - col + n] + dales[row + col];
       return res == 0;
     }
   
     public void placeQueen(int row, int col) {
       queens[row] = col;
-      rows[col] = 1;
+      cols[col] = 1;
       hills[row - col + n] = 1;
       dales[row + col] = 1;
     }
   
     public void removeQueen(int row, int col) {
       queens[row] = 0;
-      rows[col] = 0;
+      cols[col] = 0;
       hills[row - col + n] = 0;
       dales[row + col] = 0;
     }
@@ -68,7 +68,7 @@ class Solution {
   
     public List<List<String>> solveNQueens(int n) {
       this.n = n;
-      rows = new int[n];
+      cols = new int[n];
       hills = new int[2 * n];
       dales = new int[2 * n];
       queens = new int[n];
